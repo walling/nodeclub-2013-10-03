@@ -1,9 +1,13 @@
 var root = require('root');
 var markup = require('json-markup');
 var pejs = require('pejs');
+var level = require('level');
 
 var views = pejs();
 var app = root();
+var db = level(__dirname+'/db', {valueEncoding:'json'});
+
+var host = 'http://localhost:9999';
 
 var doc = {
 	name: 'Copenhagen Node.js Meetup',
@@ -23,8 +27,27 @@ var doc = {
 		'Mathias Buus <mathiasbuus@gmail.com>',
 		'Bjarke Walling <bwp@bwp.dk>'
 	],
+	signup: host+'/signup',
 	participants: []
 };
+
+db.get('participants', function(err, participants) {
+	if (participants) doc.participants = participants;
+});
+
+app.get('/signup', function(request, response) {
+	views.render('signup.html', function(err, html) {
+		if (err) return response.error(err);
+		response.send(html);
+	});
+});
+
+app.get('/after-signup', function(request, response) {
+	var name = request.query.name;
+	doc.participants.push(name);
+	db.put('participants', doc.participants);
+	response.redirect('/');
+});
 
 app.get(function(request, response) {
 	views.render('index.html', {markup:markup(doc)}, function(err, html) {
