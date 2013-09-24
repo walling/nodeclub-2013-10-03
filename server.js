@@ -8,6 +8,7 @@ var app = root();
 var doc = {
 	name: 'Copenhagen Node.js Meetup',
 	venue: 'Founders House',
+	where: 'http://goo.gl/maps/FgAAc',
 	location: {
 		lat: 55.681783,
 		lng: 12.584704
