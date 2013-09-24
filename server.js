@@ -44,7 +44,7 @@ app.get('/signup', function(request, response) {
 });
 
 app.get('/after-signup', function(request, response) {
-	var name = request.query.name;
+	var name = ('' + [request.query.name]).trim().replace(/[\0-\x1F\s]+/g, ' ');
 	var uniq = {};
 
 	doc.participants.push(name);
