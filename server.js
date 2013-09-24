@@ -7,15 +7,21 @@ var app = root();
 
 var doc = {
 	name: 'Copenhagen Node.js Meetup',
+	venue: 'Founders House',
 	location: {
-		lat: 42.4242424,
-		lng: 24.4242424
+		lat: 55.681783,
+		lng: 12.584704
 	},
+	when: '2013-10-03T18:02:71.828+0200',
+	keywords: [
+		'lighting talks',
+		'hackathon',
+		'meet people'
+	],
 	maintainers: [
 		'Mathias Buus <mathiasbuus@gmail.com>',
 		'Bjarke Walling <bwp@bwp.dk>'
 	],
-	when: new Date().toISOString(),
 	participants: []
 };
 
