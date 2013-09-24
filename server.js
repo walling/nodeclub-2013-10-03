@@ -5,6 +5,8 @@ var pejs = require('pejs');
 var views = pejs();
 var app = root();
 
+var host = 'http://localhost:9999';
+
 var doc = {
 	name: 'Copenhagen Node.js Meetup',
 	venue: 'Founders House',
@@ -23,8 +25,22 @@ var doc = {
 		'Mathias Buus <mathiasbuus@gmail.com>',
 		'Bjarke Walling <bwp@bwp.dk>'
 	],
+	signup: host+'/signup',
 	participants: []
 };
+
+app.get('/signup', function(request, response) {
+	views.render('signup.html', function(err, html) {
+		if (err) return response.error(err);
+		response.send(html);
+	});
+});
+
+app.get('/after-signup', function(request, response) {
+	var name = request.query.name;
+	doc.participants.push(name);
+	response.redirect('/');
+});
 
 app.get(function(request, response) {
 	views.render('index.html', {markup:markup(doc)}, function(err, html) {

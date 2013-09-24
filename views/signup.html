@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+	<title>signup now</title>
+</head>
+<body>
+	<script>
+		var name = prompt('What is your name?');
+		if (name) location = '/after-signup?name='+encodeURIComponent(name);
+		else location = '/';
+	</script>
+</body>
+</html>
