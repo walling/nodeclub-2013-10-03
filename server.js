@@ -7,7 +7,8 @@ var views = pejs();
 var app = root();
 var db = level(__dirname+'/db', {valueEncoding:'json'});
 
-var host = 'http://localhost:9999';
+var production = process.env.NODE_ENV === 'production';
+var host = production ? 'http://nodeclub.dk' : 'http://localhost:9999';
 
 var doc = {
 	name: 'Copenhagen Node.js Meetup',
