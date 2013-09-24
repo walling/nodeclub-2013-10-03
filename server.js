@@ -1,9 +1,11 @@
 var root = require('root');
 var markup = require('json-markup');
 var pejs = require('pejs');
+var level = require('level');
 
 var views = pejs();
 var app = root();
+var db = level(__dirname+'/db', {valueEncoding:'json'});
 
 var host = 'http://localhost:9999';
 
@@ -29,6 +31,10 @@ var doc = {
 	participants: []
 };
 
+db.get('participants', function(err, participants) {
+	if (participants) doc.participants = participants;
+});
+
 app.get('/signup', function(request, response) {
 	views.render('signup.html', function(err, html) {
 		if (err) return response.error(err);
@@ -39,6 +45,7 @@ app.get('/signup', function(request, response) {
 app.get('/after-signup', function(request, response) {
 	var name = request.query.name;
 	doc.participants.push(name);
+	db.put('participants', doc.participants);
 	response.redirect('/');
 });
 
