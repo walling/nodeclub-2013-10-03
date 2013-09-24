@@ -45,7 +45,14 @@ app.get('/signup', function(request, response) {
 
 app.get('/after-signup', function(request, response) {
 	var name = request.query.name;
+	var uniq = {};
+
 	doc.participants.push(name);
+	doc.participants.forEach(function(name) {
+		uniq[name] = true;
+	});
+	doc.participants = Object.keys(uniq);
+	
 	db.put('participants', doc.participants);
 	response.redirect('/');
 });
