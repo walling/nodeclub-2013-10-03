@@ -47,7 +47,7 @@ app.get('/after-signup', function(request, response) {
 	var name = ('' + [request.query.name]).trim().replace(/[\0-\x1F\s]+/g, ' ');
 	var uniq = {};
 
-	doc.participants.push(name);
+	if (name) doc.participants.push(name);
 	doc.participants.forEach(function(name) {
 		uniq[name] = true;
 	});
