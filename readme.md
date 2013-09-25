@@ -3,7 +3,7 @@
 This is the website on [nodeclub.dk](http://nodeclub.dk/). The domain is generously provided by [@ianjorgensen](https://twitter.com/ianjorgensen). Start the server:
 
 ```bash
-npm install .
+npm install
 node server
 ```
 
