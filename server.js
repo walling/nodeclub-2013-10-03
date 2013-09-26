@@ -8,7 +8,7 @@ var app = root();
 var db = level(__dirname+'/db', {valueEncoding:'json'});
 
 var production = process.env.NODE_ENV === 'production';
-var host = production ? 'http://nodejs.walling.dk' : 'http://localhost:9999';
+var host = production ? 'http://nodeclub.walling.dk' : 'http://localhost:9999';
 
 var doc = {
 	name: 'Copenhagen Node.js Meetup',
