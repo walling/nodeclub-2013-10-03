@@ -12,6 +12,12 @@ var host = production ? 'http://nodeclub.walling.dk' : 'http://localhost:9999';
 
 var doc = {
 	name: 'Copenhagen Node.js Meetup',
+	event: 'ended',
+	report: [
+		'thanks for meeting all of you',
+		'it was awesome',
+		'hope to see you again soon :)'
+	],
 	fork_me_on_github: 'https://github.com/walling/nodeclub-2013-10-03',
 	venue: 'Founders House',
 	where: 'http://goo.gl/maps/FgAAc',
