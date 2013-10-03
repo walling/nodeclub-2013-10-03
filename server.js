@@ -45,16 +45,16 @@ app.get('/signup', function(request, response) {
 });
 
 app.get('/after-signup', function(request, response) {
-	var name = ('' + [request.query.name]).trim().replace(/[\0-\x1F\s]+/g, ' ');
-	var uniq = {};
+	// var name = ('' + [request.query.name]).trim().replace(/[\0-\x1F\s]+/g, ' ');
+	// var uniq = {};
 
-	if (name) doc.participants.push(name);
-	doc.participants.forEach(function(name) {
-		uniq[name] = true;
-	});
-	doc.participants = Object.keys(uniq);
+	// if (name) doc.participants.push(name);
+	// doc.participants.forEach(function(name) {
+	// 	uniq[name] = true;
+	// });
+	// doc.participants = Object.keys(uniq);
 	
-	db.put('participants', doc.participants);
+	// db.put('participants', doc.participants);
 	response.redirect('/');
 });
 
